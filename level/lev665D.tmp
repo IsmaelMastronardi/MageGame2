@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnqpv82i01w3p"]
+
+[ext_resource type="PackedScene" uid="uid://botg1d4q6g05j" path="res://player/player.tscn" id="1_dd77g"]
+[ext_resource type="Texture2D" uid="uid://b07rju3eav6wn" path="res://assets/Textures/dirt_full_new.png" id="2_yrdew"]
+
+[node name="level" type="Node2D"]
+
+[node name="DirtFullNew" type="Sprite2D" parent="."]
+position = Vector2(275, 208)
+scale = Vector2(19.75, 10.5625)
+texture = ExtResource("2_yrdew")
+
+[node name="player" parent="." instance=ExtResource("1_dd77g")]
+position = Vector2(564, 328)
