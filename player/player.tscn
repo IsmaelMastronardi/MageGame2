@@ -10,7 +10,7 @@ height = 24.0
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_p0avd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="player_image" type="Sprite2D" parent="."]
 texture = ExtResource("1_brgj2")
 hframes = 2
 
@@ -22,4 +22,9 @@ shape = SubResource("CapsuleShape2D_to858")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="walk_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="walk_timer" to="." method="_on_walk_timer_timeout"]
