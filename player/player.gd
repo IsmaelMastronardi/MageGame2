@@ -24,7 +24,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func shoot():
-	print('pew')
 	var new_attack = ice_spear.instantiate()
 	get_parent().add_child(new_attack)
 	new_attack.position = position
