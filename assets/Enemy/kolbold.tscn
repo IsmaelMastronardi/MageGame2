@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bk0qynxc8jojt"]
+
+[ext_resource type="Texture2D" uid="uid://dnucd6n1ylq7c" path="res://assets/Textures/Enemy/kolbold_weak.png" id="1_ckpyf"]
+[ext_resource type="Script" path="res://assets/Enemy/kolbold.gd" id="1_tbf57"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vuqu"]
+atlas = ExtResource("1_ckpyf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uejfr"]
+atlas = ExtResource("1_ckpyf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nejjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vuqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uejfr")
+}],
+"loop": true,
+"name": &"Kolbold_move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m3lqx"]
+radius = 7.0
+height = 24.0
+
+[node name="Kolbold" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_tbf57")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -15)
+sprite_frames = SubResource("SpriteFrames_nejjo")
+animation = &"Kolbold_move"
+frame_progress = 0.348059
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -11)
+shape = SubResource("CapsuleShape2D_m3lqx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
