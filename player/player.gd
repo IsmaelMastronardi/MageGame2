@@ -14,10 +14,21 @@ func get_input():
 	elif direction.x <0:
 		$Sprite2D.flip_h = false
 	
+	if velocity.x > 0:
+		$Sprite2D.frame = 0
+	else:
+		toggle_frames()
+	
 	if Input.is_action_just_pressed("primary") and can_shoot:
 		can_shoot = false
 		shoot()
 		$shoot_timer.start()
+
+func toggle_frames():
+	if $Sprite2D.frame == 0:
+		$Sprite2D.frame = 1
+	else:
+		$Sprite2D.frame = 0
 
 func _physics_process(delta):
 	get_input()
