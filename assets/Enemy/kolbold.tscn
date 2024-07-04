@@ -29,9 +29,9 @@ animations = [{
 radius = 7.0
 height = 24.0
 
-[node name="Kolbold" type="RigidBody2D"]
-collision_mask = 0
-gravity_scale = 0.0
+[node name="Kolbold" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_tbf57")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -44,5 +44,3 @@ frame_progress = 0.348059
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -11)
 shape = SubResource("CapsuleShape2D_m3lqx")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

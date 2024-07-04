@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://pmlj5bp81tv8"]
 
-[ext_resource type="Texture2D" uid="uid://cg6uag6e4rfhd" path="res://Maps/Textures/gentle forest v01.png" id="1_5iviy"]
+[ext_resource type="Texture2D" uid="uid://cg6uag6e4rfhd" path="res://assets/Maps/Textures/gentle forest v01.png" id="1_5iviy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ojg65"]
 resource_name = "Daytime"

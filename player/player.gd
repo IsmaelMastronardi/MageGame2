@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 500
+var speed = 100
 var can_shoot: bool = true
 var ice_spear = preload("res://projectiles/ice_spear.tscn")
 @onready var walkTimer = get_node("walk_timer")
@@ -9,8 +9,10 @@ var ice_spear = preload("res://projectiles/ice_spear.tscn")
 func get_input():
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
-	if Input.is_action_just_pressed("sprint"):
+	if Input.is_action_pressed("sprint"):
 		speed = 600
+	else:
+		speed = 100
 	
 	if Input.is_action_just_pressed("primary") and can_shoot:
 		can_shoot = false
