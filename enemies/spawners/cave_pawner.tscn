@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://btjjkcujnii4a"]
+
+[ext_resource type="Script" path="res://enemies/spawners/spawner.gd" id="1_lwry6"]
+[ext_resource type="PackedScene" uid="uid://bk0qynxc8jojt" path="res://enemies/mobs/kolbold.tscn" id="2_471k6"]
+[ext_resource type="Texture2D" uid="uid://cg6uag6e4rfhd" path="res://assets/Maps/Textures/gentle forest v01.png" id="3_b1pmn"]
+
+[sub_resource type="Curve2D" id="Curve2D_uqt4g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, -1, 0, 0, 0, 0, -1, 132, 0, 0, 0, 0, 186, 142, 0, 0, 0, 0, 184, 1, 0, 0, 0, 0, -1, -1)
+}
+point_count = 5
+
+[node name="cave_pawner" type="StaticBody2D" node_paths=PackedStringArray("spawn_timer", "spawn_area")]
+script = ExtResource("1_lwry6")
+spawn_timer = NodePath("spawn_timer")
+spawn_area = NodePath("Path2D/PathFollow2D")
+mob = ExtResource("2_471k6")
+
+[node name="GentleForestV01" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-4, -2)
+texture = ExtResource("3_b1pmn")
+hframes = 4
+vframes = 4
+frame = 12
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_uqt4g")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-1, -1)
+rotation = 1.5708

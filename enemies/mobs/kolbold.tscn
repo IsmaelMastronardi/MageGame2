@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bk0qynxc8jojt"]
 
 [ext_resource type="Texture2D" uid="uid://dnucd6n1ylq7c" path="res://assets/Textures/Enemy/kolbold_weak.png" id="1_ckpyf"]
-[ext_resource type="Script" path="res://assets/Enemy/kolbold.gd" id="1_tbf57"]
+[ext_resource type="Script" path="res://enemies/mobs/kolbold.gd" id="1_tbf57"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vuqu"]
 atlas = ExtResource("1_ckpyf")
