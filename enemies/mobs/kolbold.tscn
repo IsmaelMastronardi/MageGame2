@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bk0qynxc8jojt"]
+[gd_scene load_steps=13 format=3 uid="uid://bk0qynxc8jojt"]
 
 [ext_resource type="Texture2D" uid="uid://dnucd6n1ylq7c" path="res://assets/Textures/Enemy/kolbold_weak.png" id="1_ckpyf"]
 [ext_resource type="Script" path="res://enemies/mobs/kolbold.gd" id="1_tbf57"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_1xfxq"]
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_5n54b"]
 [ext_resource type="Script" path="res://components/health_component.gd" id="5_jyn8g"]
+[ext_resource type="PackedScene" uid="uid://3tkfya2isskr" path="res://projectiles/shooter_component.tscn" id="6_3aqk2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vuqu"]
 atlas = ExtResource("1_ckpyf")
@@ -104,3 +105,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_8hn1k")
 step = 0.0
 fill_mode = 1
 show_percentage = false
+
+[node name="ShooterComponent" parent="." instance=ExtResource("6_3aqk2")]
+position = Vector2(1, -12)
+rotation_speed = 0
+shooter_wait_time = 1.0
+spawn_points_count = 24

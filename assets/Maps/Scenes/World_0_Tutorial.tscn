@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://tr8oxsoj6ucd"]
+[gd_scene load_steps=4 format=3 uid="uid://tr8oxsoj6ucd"]
 
 [ext_resource type="TileSet" uid="uid://pmlj5bp81tv8" path="res://assets/Maps/Tilesets/Forest_Daytime.tres" id="1_4a6h7"]
+[ext_resource type="PackedScene" uid="uid://botg1d4q6g05j" path="res://player/player.tscn" id="2_537i0"]
+[ext_resource type="PackedScene" uid="uid://bk0qynxc8jojt" path="res://enemies/mobs/kolbold.tscn" id="3_27nvm"]
 
 [node name="World_0_Tutorial" type="TileMap"]
 texture_filter = 1
@@ -17,3 +19,17 @@ layer_3/tile_data = PackedInt32Array(1179656, 524288, 6, 1179657, 655360, 5, 117
 layer_4/name = "Trees"
 layer_4/z_index = 5
 layer_4/tile_data = PackedInt32Array(458744, 720896, 1, 524280, 720896, 2, 589816, 720896, 3, 393209, 786432, 0, 458745, 786432, 1, 524281, 786432, 2, 589817, 786432, 3, 655353, 786432, 4, 393210, 851968, 0, 458746, 851968, 1, 524282, 851968, 2, 589818, 851968, 3, 655354, 851968, 4, 393211, 917504, 0, 458747, 917504, 1, 524283, 917504, 2, 589819, 917504, 3, 655355, 917504, 4, 458748, 983040, 1, 524284, 983040, 2, 589820, 983040, 3, 655356, 983040, 4)
+
+[node name="player" parent="." instance=ExtResource("2_537i0")]
+position = Vector2(314, 441)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Kolbold" parent="." instance=ExtResource("3_27nvm")]
+position = Vector2(318, 407)
+collision_layer = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(309, 392, 309, 406, 319, 411, 328, 405, 328, 383, 333, 382, 334, 405, 320, 419, 304, 411, 304, 376, 319, 371, 331, 379, 322, 383, 314, 383)

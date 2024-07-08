@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2df2qpe8sog1"]
+
+[ext_resource type="Script" path="res://projectiles/Bullet.gd" id="1_epran"]
+[ext_resource type="Texture2D" uid="uid://c1esjpi00nnww" path="res://assets/Textures/Enemy/explosion_pixelfied.png" id="2_hgmby"]
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_epran")
+
+[node name="ExplosionPixelfied" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_hgmby")
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
