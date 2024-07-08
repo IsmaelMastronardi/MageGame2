@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_6p4gx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45p11"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.791841, 0.146836, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n7du"]
-bg_color = Color(0.805937, 0.0677749, 0, 1)
+bg_color = Color(0.10748, 0.10748, 0.10748, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_to858"]
 radius = 4.0
@@ -18,7 +18,7 @@ radius = 4.0
 collision_mask = 6
 script = ExtResource("1_p0avd")
 
-[node name="health_bar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="."]
 anchors_preset = -1
 anchor_top = -0.21
 anchor_bottom = -0.21
@@ -32,6 +32,7 @@ size_flags_horizontal = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_45p11")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8n7du")
 step = 0.0
+fill_mode = 1
 show_percentage = false
 
 [node name="player_image" type="Sprite2D" parent="."]
@@ -55,12 +56,10 @@ one_shot = true
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
 script = ExtResource("3_7rali")
-health_bar = NodePath("../health_bar")
+health_bar = NodePath("../ProgressBar")
 health = 100
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox", "health_component", "invincibiility_timer")]
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("4_6p4gx")
 hurtbox = NodePath("../hurbox")
 health_component = NodePath("../HealthComponent")
@@ -72,8 +71,6 @@ shape = SubResource("CapsuleShape2D_to858")
 debug_color = Color(0, 0.638556, 0.377072, 0.42)
 
 [node name="invincibiility_timer" type="Timer" parent="HurtBoxComponent"]
-one_shot = true
-autostart = true
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="walk_timer" to="." method="_on_walk_timer_timeout"]

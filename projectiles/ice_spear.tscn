@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://6g7hxeb7v15k"]
+[gd_scene load_steps=5 format=3 uid="uid://6g7hxeb7v15k"]
 
 [ext_resource type="Texture2D" uid="uid://c8fpd153ua0lg" path="res://assets/Textures/Items/Weapons/ice_spear.png" id="1_inhvd"]
 [ext_resource type="Script" path="res://projectiles/ice_spear.gd" id="1_n8sgs"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_xo5h4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cr1wd"]
 radius = 3.0
@@ -14,7 +15,19 @@ script = ExtResource("1_n8sgs")
 position = Vector2(-2, -2)
 rotation = 2.33874
 shape = SubResource("CapsuleShape2D_cr1wd")
+debug_color = Color(0, 0.635495, 0.416504, 0.42)
 
 [node name="IceSpear" type="Sprite2D" parent="."]
 position = Vector2(-2, -1)
 texture = ExtResource("1_inhvd")
+
+[node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
+script = ExtResource("3_xo5h4")
+hitbox = NodePath("CollisionShape2D")
+damage = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-2, -2)
+rotation = 2.33874
+shape = SubResource("CapsuleShape2D_cr1wd")
+debug_color = Color(0.819608, 0, 0, 0.419608)

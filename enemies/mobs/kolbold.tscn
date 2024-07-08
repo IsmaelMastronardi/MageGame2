@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk0qynxc8jojt"]
+[gd_scene load_steps=12 format=3 uid="uid://bk0qynxc8jojt"]
 
 [ext_resource type="Texture2D" uid="uid://dnucd6n1ylq7c" path="res://assets/Textures/Enemy/kolbold_weak.png" id="1_ckpyf"]
 [ext_resource type="Script" path="res://enemies/mobs/kolbold.gd" id="1_tbf57"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_1xfxq"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_5n54b"]
+[ext_resource type="Script" path="res://components/health_component.gd" id="5_jyn8g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vuqu"]
 atlas = ExtResource("1_ckpyf")
@@ -29,6 +32,12 @@ animations = [{
 radius = 7.0
 height = 24.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmy8b"]
+bg_color = Color(0.791841, 0.146836, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hn1k"]
+bg_color = Color(0.10748, 0.10748, 0.10748, 1)
+
 [node name="Kolbold" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -41,6 +50,57 @@ sprite_frames = SubResource("SpriteFrames_nejjo")
 animation = &"Kolbold_move"
 frame_progress = 0.348059
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(1, -11)
 shape = SubResource("CapsuleShape2D_m3lqx")
+debug_color = Color(0.990669, 0, 0.275445, 0.42)
+
+[node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_1xfxq")
+hitbox = NodePath("../hitbox")
+damage = 10
+
+[node name="hitbox" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(1, -11)
+shape = SubResource("CapsuleShape2D_m3lqx")
+debug_color = Color(0.990669, 0, 0.275445, 0.42)
+
+[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox", "health_component", "invincibiility_timer")]
+script = ExtResource("4_5n54b")
+hurtbox = NodePath("hurtbox")
+health_component = NodePath("../HealthComponent")
+invincibiility_timer = NodePath("invicibility_timer")
+
+[node name="hurtbox" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(1, -11)
+shape = SubResource("CapsuleShape2D_m3lqx")
+debug_color = Color(0.990669, 0, 0.275445, 0.42)
+
+[node name="invicibility_timer" type="Timer" parent="HurtBoxComponent"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("health_bar")]
+script = ExtResource("5_jyn8g")
+health_bar = NodePath("../health_bar")
+health = 10
+
+[node name="health_bar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_top = -0.21
+anchor_bottom = -0.21
+offset_left = -12.0
+offset_top = -21.0
+offset_right = 12.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_fmy8b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8hn1k")
+step = 0.0
+fill_mode = 1
+show_percentage = false
