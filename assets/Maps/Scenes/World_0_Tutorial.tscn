@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tr8oxsoj6ucd"]
 
-[ext_resource type="TileSet" uid="uid://pmlj5bp81tv8" path="res://Maps/Tilesets/Forest_Daytime.tres" id="1_4a6h7"]
+[ext_resource type="TileSet" uid="uid://pmlj5bp81tv8" path="res://assets/Maps/Tilesets/Forest_Daytime.tres" id="1_4a6h7"]
 
 [node name="World_0_Tutorial" type="TileMap"]
 texture_filter = 1

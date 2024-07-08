@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk4xcwnjy31ta"]
+
+[ext_resource type="Script" path="res://enemies/spawners/spawner.gd" id="1_ftxcg"]
+[ext_resource type="PackedScene" uid="uid://bk0qynxc8jojt" path="res://enemies/mobs/kolbold.tscn" id="2_77ynh"]
+[ext_resource type="Texture2D" uid="uid://cg6uag6e4rfhd" path="res://assets/Textures/Maps/19.07a - Gentle Forest 3.0a ($0 palettes)/gentle sheets/gentle forest v01.png" id="2_iwh6i"]
+
+[sub_resource type="Curve2D" id="Curve2D_j7fts"]
+
+[node name="hole_spawner" type="StaticBody2D" node_paths=PackedStringArray("spawn_timer", "spawn_area")]
+script = ExtResource("1_ftxcg")
+spawn_timer = NodePath("spawn_timer")
+spawn_area = NodePath("Path2D/PathFollow2D")
+mob = ExtResource("2_77ynh")
+
+[node name="GentleForestV01" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_iwh6i")
+hframes = 8
+vframes = 10
+frame = 12
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_j7fts")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]

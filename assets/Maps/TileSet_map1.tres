@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cejffxp37gmn3"]
 
-[ext_resource type="Texture2D" uid="uid://cg6uag6e4rfhd" path="res://assets/Textures/Maps/19.07a - Gentle Forest 3.0a ($0 palettes)/gentle sheets/gentle forest v01.png" id="1_rcwe4"]
+[ext_resource type="Texture2D" uid="uid://cg6uag6e4rfhd" path="res://assets/Maps/Textures/gentle forest v01.png" id="1_rcwe4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqgnq"]
 texture = ExtResource("1_rcwe4")
